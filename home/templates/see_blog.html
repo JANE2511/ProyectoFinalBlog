@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+<section class="mt-5 pt-5">
+    <div class="container">
+       
+        <table class="table">
+        <thead>
+          <tr>
+            <h1 style = "color:blueviolet"><th scope="col">#</th>
+            <th scope="col">Titulo del Blog</th>
+            <th scope="col">Creado</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for blog in blog_objs %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{blog.title}}</td>
+            <td>{{blog.created_at}}</td>
+            <td>
+                <a href="{%  url 'blog_update' blog.slug %}" class="btn btn-success">Editar</a>
+                <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Eliminar</a>
+
+
+            </td>
+          </tr>
+          {% endfor %}
+         
+
+          </tbody>
+          </table>
+          
+    </div>
+</section>
+
+
+
+{% endblock %}
