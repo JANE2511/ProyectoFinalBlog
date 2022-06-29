@@ -1,1 +1,1 @@
-# DjangoProject-Simple-Blog-App
+# Blog con la ayuda de boxabhi
