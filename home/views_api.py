@@ -78,8 +78,8 @@ class RegisterView(APIView):
             check_user = User.objects.filter(username = data.get('username')).first()
             
             if check_user:
-                response['message'] = 'username  already taken'
-                raise Exception('username  already taken')
+                response['message'] = 'Usuario no verificado'
+                raise Exception('Usuario no verificado')
             
             user_obj = User.objects.create(email = data.get('username') , username = data.get('username'))
             user_obj.set_password(data.get('password'))
