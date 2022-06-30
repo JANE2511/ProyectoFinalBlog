@@ -9,22 +9,22 @@
          
           <div class="form-validate">
             <div class="form-group">
-              <label class="form-label" for="loginUsername"> Username</label>
-              <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Please enter your email">
+              <label class="form-label" for="loginUsername"> Usuario</label>
+              <input class="form-control" name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com" autocomplete="off" required data-msg="Por Favor, ingresa tu correo electrónico">
             </div>
             <div class="form-group mb-4">
               <div class="row">
                 <div class="col">
-                  <label class="form-label" for="loginPassword"> Password</label>
+                  <label class="form-label" for="loginPassword"> Contraseña</label>
                 </div>
               </div>
-              <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+              <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Por favor, ingrese su Contraseña">
             </div>
            
             <!-- Submit-->
-            <button class="btn btn-lg btn-block btn-primary" onclick="login()">Sign in</button>
+            <button class="btn btn-lg btn-block btn-primary" onclick="login()">Ingresar</button>
            
-            <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a href="register">Sign Up                </a></small></p>
+            <p class="text-center"><small class="text-muted text-center">¿Aún no tienes una cuenta? <a href="{% url 'register_view' %}">Registrarse</a></small></p>
           </div>
           <a class="close-absolute mr-md-5 mr-xl-6 pt-5" href="index-2.html"> 
             <svg class="svg-icon w-3rem h-3rem">

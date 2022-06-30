@@ -11,23 +11,13 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-md-12">
-                <label>Ingrese el título del blog</label>
-                <input type="text" class="form-control" placeholder="Enter title" name="title">
-            </div>
-
-            <div class="col-md-12">
                 {{form.media}}
                 {{form.as_p}}
             </div>
 
-            <div class="col-md-12">
-
-                <input type="file" name="image" class="form-control" >
-                </div>
-
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">Crear Blog</button>
+        <button type="submit" class="btn btn-primary mt-4">Grabar</button>
 
     </form>
 

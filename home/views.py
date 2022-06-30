@@ -1,3 +1,4 @@
+from pickle import GET
 from django.shortcuts import render , redirect
 
 # Create your views here.
@@ -44,29 +45,20 @@ def see_blog(request):
 
 def add_blog(request):
     context = {'form' : BlogForm}
-    try:
-        if request.method == 'POST':
-            form = BlogForm(request.POST)
-            print(request.FILES)
-            image = request.FILES['image']
-            title = request.POST.get('title')
-            user = request.user
-            
-            if form.is_valid():
-                content = form.cleaned_data['content']
-            
-            blog_obj = BlogModel.objects.create(
-                user = user , title = title, 
-                content = content, image = image
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES)
+                        
+        if form.is_valid():
+            print(form.cleaned_data)              
+            blog_obj = BlogModel(
+                user = request.user, 
+                **form.cleaned_data
             )
-            print(blog_obj)
-            return redirect('/add-blog/')
-            
-            
-    
-    except Exception as e :
-        print(e)
-    
+            blog_obj.save()
+            return redirect('blog_detail', slug=blog_obj.slug)
+        else:
+           form = BlogForm(request.POST, request.FILES)
+           context['form']=form   
     return render(request , 'add_blog.html' , context)
 
 
@@ -80,27 +72,21 @@ def blog_update(request , slug):
         
         if blog_obj.user != request.user:
             return redirect('/')
-        
-        initial_dict = {'content': blog_obj.content}
-        form = BlogForm(initial = initial_dict)
+        if request.method == 'GET':
+            initial_dict = {'content': blog_obj.content}
+            form = BlogForm(initial = initial_dict, instance=blog_obj)
+            context['blog_obj'] = blog_obj
+            context['form'] = form
+            return render(request , 'update_blog.html' , context)
+
         if request.method == 'POST':
-            form = BlogForm(request.POST)
-            print(request.FILES)
-            image = request.FILES['image']
-            title = request.POST.get('title')
-            user = request.user
-            
+            form = BlogForm(request.POST, instance=blog_obj)
+                        
             if form.is_valid():
-                content = form.cleaned_data['content']
-            
-            blog_obj = BlogModel.objects.create(
-                user = user , title = title, 
-                content = content, image = image
-            )
-        
-        
-        context['blog_obj'] = blog_obj
-        context['form'] = form
+                form.save()     
+                return redirect('blog_detail', slug=blog_obj.slug)         
+      
+
     except Exception as e :
         print(e)
 

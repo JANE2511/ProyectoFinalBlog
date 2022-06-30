@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Directory Theme by Bootstrapious</title>
+    <title>Proyecto Coder Mi Blog</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -45,15 +45,15 @@
               
               {% if request.user.is_authenticated %}
               <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-                <a class="btn btn-info" href="{% url 'add_blog' %}">Add Blogs</a>
+                <a class="btn btn-info" href="{% url 'add_blog' %}">Añadir Blog</a>
               </li>
               <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-                <a class="btn btn-danger" href="{% url 'logout_view' %}">Logout</a>
+                <a class="btn btn-danger" href="{% url 'logout_view' %}">Salir</a>
               </li>
 
               {% else %}
               <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-                <a class="btn btn-primary" href="{% url 'login_view' %}">Add Blog</a>
+                <a class="btn btn-primary" href="{% url 'login_view' %}">Ingresar</a>
               </li>
 
               {% endif %}
@@ -78,7 +78,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-left">
-              <p class="text-sm mb-md-0">&copy; 2022, MibLog.  Gracias Boxabhi.</p>
+              <p class="text-sm mb-md-0">&copy; 2022 MibLog.  Gracias Boxabhi.</p>
             </div>
            
           </div>
